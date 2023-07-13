@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title> Login Page </title>
+</head>
+<body>
+<div class="container">
+    <div class="center">
+        <h1> Login </h1>
+        <form >
+
+            <div class="text-field">
+                <span> <input placeholder="  Username" type="text" id="username" required> </span>   
+            </div>
+
+            <!-- <div class="text-field">
+                <span> <input placeholder="Password" type="password" id="password" required> </span>
+            </div> -->
+            <!-- <input type="submit" value="Login"> -->
+
+            <div class="text-field">
+                <input placeholder="  Password" type="password" id="pwd" name="password" /> 
+            </div>
+            
+            <div class="pass"> Forgot password </div>
+            
+            <button onclick="mySubmit(this)" type="submit"> Login </button>
+
+            <div class="signup-link">
+                Not a member ? <a href="#"> Signup </a>
+            </div>
+            
+        </form>
+    </div>
+</div>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jsSHA/2.0.2/sha.js"></script>
+<script>
+ function mySubmit(obj) {
+    var pwdObj = document.getElementById('pwd');
+    var hashObj = new jsSHA("SHA-512", "TEXT", {numRounds: 1});
+    hashObj.update(pwdObj.value);
+    var hash = hashObj.getHash("HEX");
+    pwdObj.value = hash;
+  } </script>
+</html>
